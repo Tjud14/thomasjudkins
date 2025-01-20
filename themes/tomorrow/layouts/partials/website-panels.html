@@ -9,17 +9,17 @@
     <div
       class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-5 py-3"
     >
-      <div class="flex flex-col gap-2">
-        {{ range $category, $data := .Site.Data.websites }}
+      <div class="flex flex-col gap-3">
+        {{ range sort .Site.Data.websites "order" "asc" }}
           <div
             class="flex cursor-pointer items-center gap-1 leading-none hover:text-[#81a2be]"
-            data-category="{{ $category }}"
-            data-title="{{ $category }}"
-            data-sites="{{ $data.sites | jsonify }}"
-            data-icon="{{ $data.icon }}"
+            data-category="{{ .category }}"
+            data-title="{{ .category }}"
+            data-sites="{{ .sites | jsonify }}"
+            data-icon="{{ .icon }}"
           >
-            <img src="/img/websites/{{ $data.icon }}" class="h-4 w-4" />
-            {{ $category }}
+            <img src="/img/{{ .icon }}" class="h-4 w-4" />
+            {{ .category }}
           </div>
         {{ end }}
       </div>
@@ -75,7 +75,7 @@
         const icon = element.dataset.icon
 
         categoryTitle.textContent = category
-        categoryIcon.src = `/img/websites/${icon}`
+        categoryIcon.src = `/img/${icon}`
         categoryIcon.classList.remove('hidden')
 
         const contentHTML = `
@@ -86,7 +86,7 @@
             <div class="border-b border-[#282a2e] pb-4 last:border-0 last:pb-0">
               <div class="flex items-center gap-1">
                 <img 
-                  src="/img/websites/${site.icon}" 
+                  src="/img/${site.icon}" 
                   class="h-4 w-4"
                 />
                 <a 

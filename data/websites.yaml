@@ -1,35 +1,85 @@
-Programming:
+- category: "Development"
+  order: 1
   icon: "code.webp"
   sites:
-    - name: "MDN Web Docs"
+    - name: "GifCities"
       url: "https://developer.mozilla.org"
       description: "Comprehensive web development documentation and guides"
-      icon: "mdn.webp"
-    - name: "Dev.to"
-      url: "https://dev.to"
-      description: "Community of software developers getting together to help one another"
-      icon: "devto.webp"
+      icon: "gifcities.webp"
 
-Linux:
+    - name: "Iconify"
+      url: "https://icon-sets.iconify.design/"
+      description: "Comprehensive web development documentation and guides"
+      icon: "iconify.webp"
+
+    - name: "shadcn-svelte"
+      url: "https://www.shadcn-svelte.com/"
+      description: "Comprehensive web development documentation and guides"
+      icon: "svelteshadcn.webp"
+
+- category: "News/Commentary"
+  order: 2
   icon: "linux.webp"
   sites:
-    - name: "Arch Wiki"
-      url: "https://wiki.archlinux.org"
+    - name: "Antiwar.com"
+      url: "https://antiwar.com/"
       description: "Comprehensive Linux and Arch documentation"
-      icon: "arch.webp"
-    - name: "Linux Journey"
-      url: "https://linuxjourney.com"
-      description: "Learn the ways of Linux-fu, for free"
-      icon: "journey.webp"
+      icon: "antiwar.webp"
 
-Design:
-  icon: "design.webp"
+    - name: "American Renaissance"
+      url: "https://www.amren.com/"
+      description: "Learn the ways of Linux-fu, for free"
+      icon: "americanrenaissance.webp"
+
+    - name: "The Unz Review"
+      url: "https://www.unz.com/"
+      description: "Supporting sustainable open source ecosystems"
+      icon: "unz.webp"
+
+- category: "Podcasts/YouTube"
+  order: 3
+  icon: "youtube.webp"
   sites:
-    - name: "Dribbble"
-      url: "https://dribbble.com"
-      description: "Design inspiration and creative community"
-      icon: "dribbble.webp"
-    - name: "Figma Community"
-      url: "https://www.figma.com/community"
-      description: "Free design resources and community templates"
-      icon: "figma.webp"
+    - name: "Freedomain"
+      url: "https://www.fdrpodcasts.com"
+      description: "Supporting sustainable open source ecosystems"
+      icon: "freedomain.webp"
+
+    - name: "Hardcore History"
+      url: "https://www.dancarlin.com/hardcore-history-series/"
+      description: "Supporting sustainable open source ecosystems"
+      icon: "hardcorehistory.webp"
+
+    - name: "Green Dot Aviation"
+      url: "https://www.youtube.com/@GreenDotAviation"
+      description: "Supporting sustainable open source ecosystems"
+      icon: "youtube.webp"
+
+- category: "Miscellaneous"
+  order: 4
+  icon: "news.webp"
+  sites:
+    - name: "Based Cooking"
+      url: "https://based.cooking/"
+      description: "A social news website focusing on computer science and entrepreneurship"
+      icon: "basedcooking.webp"
+
+    - name: "LandChad.net"
+      url: "https://landchad.net/"
+      description: "A social news website focusing on computer science and entrepreneurship"
+      icon: "landchad.webp"
+
+    - name: "Luke's Webpage"
+      url: "https://lukesmith.xyz/"
+      description: "A social news website focusing on computer science and entrepreneurship"
+      icon: "lukesmith.webp"
+
+    - name: "PRISM BREAK"
+      url: "https://prism-break.org/en/"
+      description: "A social news website focusing on computer science and entrepreneurship"
+      icon: "prismbreak.webp"
+
+    - name: "Soulseek"
+      url: "http://www.slsknet.org/news/"
+      description: "A social news website focusing on computer science and entrepreneurship"
+      icon: "soulseek.webp"

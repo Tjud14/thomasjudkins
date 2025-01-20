@@ -8,7 +8,7 @@
     <div
       class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-5 py-3"
     >
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col gap-3">
         {{ range $id, $project := .Site.Data.projects }}
           <div
             class="flex cursor-pointer items-center gap-1 leading-none hover:text-[#81a2be]"
@@ -19,7 +19,7 @@
             data-links="{{ $project.links | jsonify }}"
             data-icon="{{ $project.icon }}"
           >
-            <img src="/img/projects/{{ $project.icon }}" class="h-4 w-4" />
+            <img src="/img/{{ $project.icon }}" class="h-4 w-4" />
             {{ $project.title }}
           </div>
         {{ end }}
@@ -76,7 +76,7 @@
         const icon = element.dataset.icon
 
         detailTitle.textContent = title
-        detailIcon.src = `/img/projects/${icon}`
+        detailIcon.src = `/img/${icon}`
         detailIcon.classList.remove('hidden')
 
         const contentHTML = `

@@ -1,6 +1,6 @@
 gunbase:
   title: "GUNBASE™"
-  icon: "gunbase.png"
+  icon: "gunbase.webp"
   description: |
     A comprehensive firearm database and reference system built with modern web technologies.
     Check out the [demo](https://gunbase.org)
@@ -15,7 +15,7 @@ gunbase:
 
 tomorrow:
   title: "Tomorrow (Hugo Theme)"
-  icon: "hugo.webp"
+  icon: "download.webp"
   description: |
     A clean and minimal Hugo theme inspired by textboards, focusing on content readability and performance.
     View the theme on [GitHub](https://github.com/thomasjudkins/tomorrow)
