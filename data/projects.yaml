@@ -1,0 +1,42 @@
+gunbase:
+  title: "GUNBASE™"
+  icon: "gunbase.png"
+  description: |
+    A comprehensive firearm database and reference system built with modern web technologies.
+    Check out the [demo](https://gunbase.org)
+  features:
+    - Modern web interface built with SvelteKit, providing a smooth and responsive user experience
+    - Powerful instant search functionality for quick access to database entries
+    - Extensive historical data and documentation for research purposes
+    - Community-driven development with user contributions via GitHub
+  links:
+    demo: https://gunbase.org
+    github: https://github.com/thomasjudkins/gunbase
+
+tomorrow:
+  title: "Tomorrow (Hugo Theme)"
+  icon: "hugo.webp"
+  description: |
+    A clean and minimal Hugo theme inspired by textboards, focusing on content readability and performance.
+    View the theme on [GitHub](https://github.com/thomasjudkins/tomorrow)
+  features:
+    - Fast and lightweight design optimized for quick page loads
+    - Fully responsive layout for mobile and desktop devices
+    - Built-in support for image galleries and media content
+    - Extensive customization options through theme configuration
+  links:
+    docs: https://tomorrow.thomasjudkins.com/docs
+    github: https://github.com/thomasjudkins/tomorrow
+
+yoink:
+  title: "Yoink!"
+  icon: "download.webp"
+  description: |
+    A lightweight download manager designed specifically for Linux systems.
+  features:
+    - Terminal-based user interface built with Bubbletea framework
+    - Advanced download queue management capabilities
+    - Real-time progress tracking and statistics
+    - Automatic download resumption after interruption
+  links:
+    github: https://github.com/thomasjudkins/yoink

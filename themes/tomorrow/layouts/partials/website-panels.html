@@ -1,0 +1,116 @@
+<div class="mb-8 flex w-full gap-3">
+  <!-- Categories Column -->
+  <div class="w-1/2">
+    <div
+      class="flex h-10 w-full items-center bg-[#282a2e] px-4 py-3 font-bold leading-none"
+    >
+      Category
+    </div>
+    <div
+      class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-5 py-3"
+    >
+      <div class="flex flex-col gap-2">
+        {{ range $category, $data := .Site.Data.websites }}
+          <div
+            class="flex cursor-pointer items-center gap-1 leading-none hover:text-[#81a2be]"
+            data-category="{{ $category }}"
+            data-title="{{ $category }}"
+            data-sites="{{ $data.sites | jsonify }}"
+            data-icon="{{ $data.icon }}"
+          >
+            <img src="/img/websites/{{ $data.icon }}" class="h-4 w-4" />
+            {{ $category }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Sites Column -->
+  <div class="w-1/2">
+    <div
+      id="category-title"
+      class="flex h-10 w-full items-center gap-1 bg-[#282a2e] px-4 py-3 font-bold"
+    >
+      <img id="category-icon" src="" class="hidden h-4 w-4" />
+      <span class="leading-none">Select a Category</span>
+    </div>
+    <div
+      id="category-content"
+      class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-5 py-3"
+    >
+      <div class="text-gray-500">
+        Click a category on the left to view websites
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryElements = document.querySelectorAll('[data-category]')
+    const categoryTitle = document
+      .getElementById('category-title')
+      .querySelector('span')
+    const categoryIcon = document.getElementById('category-icon')
+    const categoryContent = document.getElementById('category-content')
+
+    let activeCategory = null
+
+    categoryElements.forEach((element) => {
+      element.addEventListener('click', () => {
+        // If clicking the active category, deselect it
+        if (activeCategory === element) {
+          categoryTitle.textContent = 'Select a Category'
+          categoryIcon.classList.add('hidden')
+          categoryContent.innerHTML =
+            '<div class="text-gray-500">Click a category on the left to view websites</div>'
+          element.classList.remove('text-[#81a2be]')
+          activeCategory = null
+          return
+        }
+
+        const category = element.dataset.category
+        const sites = JSON.parse(element.dataset.sites)
+        const icon = element.dataset.icon
+
+        categoryTitle.textContent = category
+        categoryIcon.src = `/img/websites/${icon}`
+        categoryIcon.classList.remove('hidden')
+
+        const contentHTML = `
+        <div class="flex flex-col gap-4">
+          ${sites
+            .map(
+              (site) => `
+            <div class="border-b border-[#282a2e] pb-4 last:border-0 last:pb-0">
+              <div class="flex items-center gap-1">
+                <img 
+                  src="/img/websites/${site.icon}" 
+                  class="h-4 w-4"
+                />
+                <a 
+                  href="${site.url}" 
+                  class="text-[#81a2be] hover:text-[#5f89ac]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ${site.name}
+                </a>
+              </div>
+              <p class="mt-1 text-sm text-gray-400">${site.description}</p>
+            </div>
+          `,
+            )
+            .join('')}
+        </div>
+      `
+
+        categoryContent.innerHTML = contentHTML
+        categoryElements.forEach((el) => el.classList.remove('text-[#81a2be]'))
+        element.classList.add('text-[#81a2be]')
+        activeCategory = element
+      })
+    })
+  })
+</script>

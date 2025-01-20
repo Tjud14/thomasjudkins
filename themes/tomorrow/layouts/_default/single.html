@@ -1,0 +1,23 @@
+{{ define "main" }}
+  {{ partial "title.html" .Title }}
+  <div class="mx-auto max-w-4xl px-4">
+    <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+      <h2 class="pb-2 font-bold">
+        <a href="{{ .RelPermalink }}" class="text-[#b294bb]">{{ .Title }}</a>
+        {{ if .Params.author }}{{ .Params.author }}{{ end }}
+        {{ partial "flag.html" . }}
+        <time class="text-sm font-normal">
+          {{ .Date.Format "01/02/06(Mon)15:04:05" }}
+          No.{{ .Params.post_number }}
+        </time>
+      </h2>
+      {{ if .Content }}
+        <div class="px-6 pb-2">
+          <p class="texct-ellipsis overflow-hidden whitespace-nowrap">
+            {{ .Content }}
+          </p>
+        </div>
+      {{ end }}
+    </article>
+  </div>
+{{ end }}

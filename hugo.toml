@@ -1,0 +1,4 @@
+baseURL = 'https://thomasjudkins.com/'
+languageCode = 'en-us'
+title = '/tj/ - Thomas Judkins'
+theme = 'tomorrow'

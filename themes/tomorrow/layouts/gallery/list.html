@@ -1,0 +1,99 @@
+{{ define "main" }}
+  {{ partial "title.html" (dict "title" "Gallery" "icon" "gallery") }}
+  <div class="mx-auto max-w-4xl px-4">
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {{ range (sort (.Resources.ByType "image") "Params.post_number" "desc") }}
+        {{ $date := "" }}
+        {{ with .Params.date }}
+          {{ $date = time.Format "01/02/06(Mon)15:04:05" . }}
+        {{ end }}
+        {{ $flagHtml := "" }}
+        {{ if .Params.flag_id }}
+          {{ $flagHtml = partial "flag.html" (dict "Params" (dict "flag_id" .Params.flag_id) "Site" $.Site) }}
+        {{ end }}
+        <div
+          class="group relative aspect-square cursor-pointer overflow-hidden bg-[#282a2e]"
+          onclick="openModalWithInfo('{{ .RelPermalink }}', '{{ .Params.title }}', '{{ .Params.author }}', '{{ .Params.post_number }}', '{{ $date }}', '{{ $flagHtml }}')"
+        >
+          <img
+            src="{{ .RelPermalink }}"
+            alt="{{ .Params.title }}"
+            loading="lazy"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <div
+    id="imageModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 p-4"
+    onclick="closeModal()"
+  >
+    <div class="flex flex-col items-center">
+      <img
+        id="modalImage"
+        class="max-h-[80vh] max-w-[90%] object-contain"
+        src=""
+        alt=""
+      />
+      <div class="mt-2">
+        <h2 class="flex items-center gap-1 text-sm">
+          <span id="modalTitle" class="font-bold text-[#b294bb]"></span>
+          <span id="modalAuthor" class="font-bold"></span>
+          <span id="modalFlag"></span>
+          <time id="modalDate" class="text-sm font-normal"></time>
+          <span id="modalPostNumber" class="text-sm font-normal"></span>
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (typeof window.modalInitialized === 'undefined') {
+      window.modalInitialized = true
+
+      function openModalWithInfo(
+        imageSrc,
+        title,
+        author,
+        postNumber,
+        date,
+        flagHtml,
+      ) {
+        const modal = document.getElementById('imageModal')
+        const modalImg = document.getElementById('modalImage')
+        const modalTitle = document.getElementById('modalTitle')
+        const modalAuthor = document.getElementById('modalAuthor')
+        const modalFlag = document.getElementById('modalFlag')
+        const modalDate = document.getElementById('modalDate')
+        const modalPostNumber = document.getElementById('modalPostNumber')
+
+        modal.classList.remove('hidden')
+        modal.classList.add('flex')
+        modalImg.src = imageSrc
+        modalTitle.textContent = title
+        modalAuthor.textContent = author || 'Anonymous'
+        modalFlag.innerHTML = flagHtml || ''
+        modalDate.textContent = date
+        modalPostNumber.textContent = postNumber ? ` No.${postNumber}` : ''
+
+        document.body.classList.add('overflow-hidden')
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('imageModal')
+        modal.classList.add('hidden')
+        modal.classList.remove('flex')
+        document.body.classList.remove('overflow-hidden')
+      }
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeModal()
+        }
+      })
+    }
+  </script>
+{{ end }}

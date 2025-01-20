@@ -1,0 +1,15 @@
+{{ if .Params.flag_id }}
+  {{ with .Site.Data.flags }}
+    {{ $flag := index .flags $.Params.flag_id }}
+    {{ if $flag }}
+      {{ $x := add (mul (sub $flag.col 1) .sprite.width) 1 }}
+      {{ $y := add (mul (sub $flag.row 1) .sprite.height) 1 }}
+      <div
+        class="inline-block h-[11px] w-[16px] border border-gray-700/20 bg-no-repeat"
+        style="background-image: url('/img/flags.webp'); background-position: -{{ $x }}px -{{ $y }}px;"
+        aria-label="{{ $flag.name }}"
+        role="img"
+      ></div>
+    {{ end }}
+  {{ end }}
+{{ end }}

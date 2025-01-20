@@ -1,0 +1,104 @@
+{{ define "main" }}
+  {{ partial "title.html" "Programs" }}
+  <div class="mx-auto max-w-4xl px-4">
+    <div class="grid grid-cols-1 gap-1">
+      <!-- Operating Systems -->
+      <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+        <h2 class="pb-2 font-bold">
+          <span class="text-[#b294bb]">Operating Systems</span>
+          Anonymous
+          {{ partial "flag.html" (dict "Params" (dict "flag_id" "us") "Site" $.Site) }}
+          <time class="text-sm font-normal">01/16/24(Tue)12:00:00</time>
+        </h2>
+        <div class="px-6 pb-2">
+          <p class="pb-2">Arch Linux - lightweight, flexible, KISS principle</p>
+          <p class="greentext pb-2">>I use Arch BTW</p>
+          <p class="pb-2">Desktop Environment: Cinnamon</p>
+          <p class="pb-2">Alternatives: Debian, Fedora</p>
+        </div>
+      </article>
+
+      <!-- Mobile -->
+      <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+        <h2 class="pb-2 font-bold">
+          <span class="text-[#b294bb]">Mobile</span>
+          Anonymous
+          {{ partial "flag.html" (dict "Params" (dict "flag_id" "us") "Site" $.Site) }}
+          <time class="text-sm font-normal">01/16/24(Tue)12:00:01</time>
+        </h2>
+        <div class="px-6 pb-2">
+          <p class="pb-2">
+            GrapheneOS - Security and privacy focused mobile OS
+          </p>
+          <p class="pb-2">LineageOS - Open source Android distribution</p>
+          <p class="greentext">>degoogle everything</p>
+        </div>
+      </article>
+
+      <!-- Browsers -->
+      <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+        <h2 class="pb-2 font-bold">
+          <span class="text-[#b294bb]">Web Browsers</span>
+          Anonymous
+          {{ partial "flag.html" (dict "Params" (dict "flag_id" "us") "Site" $.Site) }}
+          <time class="text-sm font-normal">01/16/24(Tue)12:00:02</time>
+        </h2>
+        <div class="px-6 pb-2">
+          <p class="pb-2">Firefox (hardened) with:</p>
+          <p class="pb-2">- uBlock Origin</p>
+          <p class="pb-2">- Privacy Badger</p>
+          <p class="pb-2">- HTTPS Everywhere</p>
+          <p class="greentext">>using Chrome in 2024</p>
+        </div>
+      </article>
+
+      <!-- Communication -->
+      <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+        <h2 class="pb-2 font-bold">
+          <span class="text-[#b294bb]">Communication</span>
+          Anonymous
+          {{ partial "flag.html" (dict "Params" (dict "flag_id" "us") "Site" $.Site) }}
+          <time class="text-sm font-normal">01/16/24(Tue)12:00:03</time>
+        </h2>
+        <div class="px-6 pb-2">
+          <p class="pb-2">Matrix - Decentralized communication</p>
+          <p class="pb-2">Signal - Encrypted messaging</p>
+          <p class="pb-2">XMPP - Open standard</p>
+          <p class="greentext">>not using metadata-resistant protocols</p>
+        </div>
+      </article>
+
+      <!-- Security -->
+      <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+        <h2 class="pb-2 font-bold">
+          <span class="text-[#b294bb]">Security Tools</span>
+          Anonymous
+          {{ partial "flag.html" (dict "Params" (dict "flag_id" "us") "Site" $.Site) }}
+          <time class="text-sm font-normal">01/16/24(Tue)12:00:04</time>
+        </h2>
+        <div class="px-6 pb-2">
+          <p class="pb-2">KeePassXC - Password manager</p>
+          <p class="pb-2">LUKS - Full disk encryption</p>
+          <p class="pb-2">UFW - Firewall</p>
+          <p class="greentext">>using proprietary password managers</p>
+        </div>
+      </article>
+
+      <!-- Network -->
+      <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+        <h2 class="pb-2 font-bold">
+          <span class="text-[#b294bb]">Network Tools</span>
+          Anonymous
+          {{ partial "flag.html" (dict "Params" (dict "flag_id" "us") "Site" $.Site) }}
+          <time class="text-sm font-normal">01/16/24(Tue)12:00:05</time>
+        </h2>
+        <div class="px-6 pb-2">
+          <p class="pb-2">Mullvad VPN - No logs, accepts cash/crypto</p>
+          <p class="pb-2">NextDNS - Custom DNS with blocklists</p>
+          <p class="pb-2">Wireguard - Self-hosted VPN</p>
+          <p class="greentext">>not self-hosting your VPN</p>
+        </div>
+      </article>
+    </div>
+  </div>
+{{ end }}

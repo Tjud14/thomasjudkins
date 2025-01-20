@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="32x32"
+      href="/favicon/32x32.webp"
+    />
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="16x16"
+      href="/favicon/16x16.webp"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <style>
+      .greentext {
+        color: #b5bd68 !important;
+      }
+      #detail-content a {
+        color: #81a2be;
+        text-decoration: underline;
+      }
+
+      #detail-content a:hover {
+        color: #5f89ac;
+      }
+    </style>
+
+    <!-- Add marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const paragraphs = document.querySelectorAll('p')
+
+        paragraphs.forEach((paragraph) => {
+          const text = paragraph.textContent.trim()
+          if (text.startsWith('>')) {
+            // Create a span element
+            const span = document.createElement('span')
+            span.className = 'greentext'
+            span.textContent = text
+
+            // Clear the paragraph and append the span
+            paragraph.textContent = ''
+            paragraph.appendChild(span)
+          }
+        })
+      })
+    </script>
+  </head>
+  <body
+    class="mx-2 flex min-h-full flex-col bg-[#1d1f21] text-sm text-[#c5c8c6]"
+  >
+    <header>
+      {{ partial "header.html" . }}
+    </header>
+    <main class="flex-grow">
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer>
+      {{ partial "footer.html" . }}
+    </footer>
+  </body>
+</html>

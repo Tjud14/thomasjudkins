@@ -1,0 +1,62 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const refreshButtons = document.querySelectorAll('.refresh-button')
+    const topButtons = document.querySelectorAll('.top-button')
+    const returnButtons = document.querySelectorAll('.return-button')
+
+    refreshButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        window.location.reload()
+      })
+    })
+
+    topButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        window.scrollTo(0, 0)
+      })
+    })
+
+    returnButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        if (
+          window.location.pathname === '/' ||
+          window.location.pathname === '/index.html'
+        ) {
+          window.location.reload()
+        } else {
+          window.history.back()
+        }
+      })
+    })
+  })
+</script>
+
+<div class="mt-20 border-t border-[#232529] py-1.5 text-[13px]">
+  [<span
+    class="return-button cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+    >Return</span
+  >] [<span
+    class="top-button cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+    >Top</span
+  >] [<span
+    class="refresh-button cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+    >Refresh</span
+  >]
+</div>
+<div class="border-t border-[#232529] pb-4 pt-8 text-center text-xs">
+  <div class="pb-4">
+    {{ partial "nav.html" . }}
+  </div>
+  <div class="flex flex-col items-center gap-1 text-[#b5bd68]">
+    <div class="flex items-center gap-1">
+      <img src="/img/btc.webp" alt="BTC Logo" class="h-3 w-3" />
+      <p>bc1qkyvknjap3cjtgfqd5qwc0q2ygry7nep7d4t57y</p>
+    </div>
+    <div class="flex items-center gap-1">
+      <img src="/img/monero.webp" alt="XMR Logo" class="h-3 w-3" />
+      <p>
+        48jewbtxe4jU3MnzJFjTs3gVFWh2nRrAMWdUuUd7Ubo375LL4SjLTnMRKBrXburvEh38QSNLrJy3EateykVCypnm6gcT9bh
+      </p>
+    </div>
+  </div>
+</div>

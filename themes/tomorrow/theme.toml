@@ -1,0 +1,12 @@
+name = "tomorrow"
+license = "GPL-3.0"
+licenselink = "https://github.com/yourname/mytheme/blob/master/LICENSE"
+description = "A clean Hugo theme with Tailwind CSS"
+homepage = "https://github.com/yourname/mytheme"
+tags = ["blog", "responsive", "tailwind"]
+features = ["tailwind"]
+min_version = "0.41.0"
+
+[author]
+  name = "Your Name"
+  homepage = "https://yoursite.com"

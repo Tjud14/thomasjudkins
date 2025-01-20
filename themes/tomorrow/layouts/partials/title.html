@@ -1,0 +1,66 @@
+{{ $title := "" }}
+{{ $icon := "" }}
+
+{{ if reflect.IsMap . }}
+  {{ $title = .title }}
+  {{ $icon = .icon }}
+{{ else }}
+  {{ $title = . }}
+{{ end }}
+
+{{ $image := "" }}
+{{ if $icon }}
+  {{ $image = printf "/img/%s.webp" $icon }}
+{{ end }}
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const topControls = document.querySelectorAll('.top-controls')
+    topControls.forEach((controls) => {
+      const returnBtn = controls.querySelector('.return-button')
+      const bottomBtn = controls.querySelector('.bottom-button')
+      const refreshBtn = controls.querySelector('.refresh-button')
+      returnBtn.addEventListener('click', function () {
+        if (
+          window.location.pathname === '/' ||
+          window.location.pathname === '/index.html'
+        ) {
+          window.location.reload()
+        } else {
+          window.history.back()
+        }
+      })
+      bottomBtn.addEventListener('click', function () {
+        window.scrollTo(0, document.body.scrollHeight)
+      })
+      refreshBtn.addEventListener('click', function () {
+        window.location.reload()
+      })
+    })
+  })
+</script>
+<div class="mb-6 mt-3">
+  <h1
+    class="mb-2 flex items-center justify-center gap-1.5 text-center text-3xl font-bold"
+  >
+    {{ if $icon }}
+      <img src="{{ $image }}" alt="{{ $title }} icon" class="h-8 w-auto" />
+    {{ end }}
+    <span>{{ $title }}</span>
+  </h1>
+  <div
+    class="top-controls border-b border-t border-[#232529] py-1.5 text-[13px]"
+  >
+    [<span
+      class="return-button cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+      >Return</span
+    >] [<span
+      class="bottom-button cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+      >Bottom</span
+    >] [<span
+      class="refresh-button cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+      >Refresh</span
+    >]
+  </div>
+</div>

@@ -1,0 +1,28 @@
+# Hugo default output directory
+/public
+/resources
+
+# Hugo cache
+.hugo_build.lock
+
+# Node modules (for Tailwind CSS)
+node_modules/
+package-lock.json
+
+# Generated files
+.DS_Store
+*.log
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.directory
+.Trash-*
+.nfs*
+.fuse_hidden*
+Thumbs.db

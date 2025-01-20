@@ -1,0 +1,108 @@
+<!-- Announcements section -->
+<div class="w-full py-1.5 text-xs" id="announcements">
+  <div class="announcement-list">
+    <!-- Display first 3 announcements -->
+    {{ $pages := where .Site.RegularPages "Section" "announcements" }}
+    {{ if $pages }}
+      {{ range first 3 $pages }}
+        <p class="line-clamp-1">
+          <span class="date">{{ .Date.Format "01/02/06" }}</span> {{ .Title }}
+        </p>
+      {{ end }}
+    {{ end }}
+
+
+    <!-- Hidden announcements -->
+    <div class="hidden-announcements" style="display: none;">
+      {{ range first 10 (after 3 $pages) }}
+        <p class="line-clamp-1">
+          <span class="date">{{ .Date.Format "01/02/06" }}</span> {{ .Title }}
+        </p>
+      {{ end }}
+    </div>
+  </div>
+
+  <!-- Control buttons -->
+  <div class="flex justify-end gap-0.5">
+    <span class="button-wrapper" id="hide-wrapper"
+      >[<span
+        class="cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+        id="hide-button"
+        >Hide</span
+      >]</span
+    >
+    <span class="button-wrapper" id="show-all-wrapper"
+      >[<span
+        class="cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+        id="show-all-button"
+        >Show All</span
+      >]</span
+    >
+    <span class="button-wrapper" id="show-wrapper" style="display: none;"
+      >[<span
+        class="cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+        id="show-button"
+        >Show Announcements</span
+      >]</span
+    >
+    <span class="button-wrapper" id="show-less-wrapper" style="display: none;"
+      >[<span
+        class="cursor-pointer text-[#81a2be] hover:text-[#5f89ac]"
+        id="show-less-button"
+        >Show Less</span
+      >]</span
+    >
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get DOM elements
+    const hideButton = document.getElementById('hide-button')
+    const showAllButton = document.getElementById('show-all-button')
+    const showButton = document.getElementById('show-button')
+    const showLessButton = document.getElementById('show-less-button')
+
+    // Get wrapper elements
+    const hideWrapper = document.getElementById('hide-wrapper')
+    const showAllWrapper = document.getElementById('show-all-wrapper')
+    const showWrapper = document.getElementById('show-wrapper')
+    const showLessWrapper = document.getElementById('show-less-wrapper')
+
+    const hiddenAnnouncements = document.querySelector('.hidden-announcements')
+    const announcementList = document.querySelector('.announcement-list')
+
+    // Hide button: Hide everything and show only the "Show Announcements" button
+    hideButton.addEventListener('click', function () {
+      announcementList.style.display = 'none'
+      hideWrapper.style.display = 'none'
+      showAllWrapper.style.display = 'none'
+      showLessWrapper.style.display = 'none'
+      showWrapper.style.display = 'inline'
+    })
+
+    // Show button: Show the first 3 announcements
+    showButton.addEventListener('click', function () {
+      announcementList.style.display = 'block'
+      hiddenAnnouncements.style.display = 'none'
+      hideWrapper.style.display = 'inline'
+      showAllWrapper.style.display = 'inline'
+      showWrapper.style.display = 'none'
+      showLessWrapper.style.display = 'none'
+    })
+
+    // Show All button: Show all announcements
+    showAllButton.addEventListener('click', function () {
+      hiddenAnnouncements.style.display = 'block'
+      showAllWrapper.style.display = 'none'
+      showLessWrapper.style.display = 'inline'
+    })
+
+    // Show Less button: Hide the additional announcements
+    showLessButton.addEventListener('click', function () {
+      hiddenAnnouncements.style.display = 'none'
+      showLessWrapper.style.display = 'none'
+      showAllWrapper.style.display = 'inline'
+    })
+  })
+</script>

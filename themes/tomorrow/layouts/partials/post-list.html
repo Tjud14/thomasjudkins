@@ -1,0 +1,30 @@
+{{ define "partials/post-list.html" }}
+  {{ $pages := . }}
+  {{ range $pages }}
+    <article class="w-full bg-[#282a2e] px-4 py-3 text-sm">
+      <h2 class="pb-2 font-bold">
+        <a href="{{ .RelPermalink }}" class="text-[#b294bb]">{{ .Title }}</a>
+        {{ if .Params.author }}{{ .Params.author }}{{ end }}
+        {{ partial "flag.html" . }}
+        <time class="text-sm font-normal">
+          {{ .Date.Format "01/02/06(Mon)15:04:05" }}
+          No.{{ .Params.post_number }}
+        </time>
+      </h2>
+      {{ if .Content }}
+        <div class="px-6">
+          <p class="overflow-hidden text-ellipsis whitespace-nowrap">
+            {{ .Content | strings.Truncate 240 }}
+          </p>
+        </div>
+        <div class="flex justify-end">
+          [<a
+            href="{{ .RelPermalink }}"
+            class="text-[13px] text-[#81a2be] hover:text-[#5f89ac]"
+            >Read more...</a
+          >]
+        </div>
+      {{ end }}
+    </article>
+  {{ end }}
+{{ end }}

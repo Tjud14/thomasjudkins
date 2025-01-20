@@ -1,0 +1,35 @@
+Programming:
+  icon: "code.webp"
+  sites:
+    - name: "MDN Web Docs"
+      url: "https://developer.mozilla.org"
+      description: "Comprehensive web development documentation and guides"
+      icon: "mdn.webp"
+    - name: "Dev.to"
+      url: "https://dev.to"
+      description: "Community of software developers getting together to help one another"
+      icon: "devto.webp"
+
+Linux:
+  icon: "linux.webp"
+  sites:
+    - name: "Arch Wiki"
+      url: "https://wiki.archlinux.org"
+      description: "Comprehensive Linux and Arch documentation"
+      icon: "arch.webp"
+    - name: "Linux Journey"
+      url: "https://linuxjourney.com"
+      description: "Learn the ways of Linux-fu, for free"
+      icon: "journey.webp"
+
+Design:
+  icon: "design.webp"
+  sites:
+    - name: "Dribbble"
+      url: "https://dribbble.com"
+      description: "Design inspiration and creative community"
+      icon: "dribbble.webp"
+    - name: "Figma Community"
+      url: "https://www.figma.com/community"
+      description: "Free design resources and community templates"
+      icon: "figma.webp"

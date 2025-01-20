@@ -1,0 +1,17 @@
+sprite:
+  width: 16
+  height: 11
+  columns: 16
+flags:
+  'pa':
+    col: 3
+    row: 12
+    name: 'Algeria'
+  'uk':
+    col: 3
+    row: 6
+    name: 'Albania'
+  'us':
+    col: 16
+    row: 15
+    name: 'United States'

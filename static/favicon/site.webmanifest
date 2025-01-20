@@ -1,0 +1,19 @@
+{
+    "name": "/tj/ - Thomas Judkins",
+    "short_name": "/tj/",
+    "icons": [
+        {
+            "src": "/favicon/16x16.webp",
+            "sizes": "16x16",
+            "type": "image/webp"
+        },
+        {
+            "src": "/favicon/32x32.webp", 
+            "sizes": "32x32",
+            "type": "image/webp"
+        }
+    ],
+    "theme_color": "#1d1f21",
+    "background_color": "#1d1f21",
+    "display": "minimal-ui"
+ }
