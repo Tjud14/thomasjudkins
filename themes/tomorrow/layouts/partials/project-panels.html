@@ -1,17 +1,85 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const projectElements = document.querySelectorAll('[data-project]')
+    const detailTitle = document
+      .getElementById('detail-title')
+      .querySelector('span')
+    const detailIcon = document.getElementById('detail-icon')
+    const detailContent = document.getElementById('detail-content')
+    let activeProject = null
+
+    projectElements.forEach((element) => {
+      element.addEventListener('click', () => {
+        // If clicking the active project, deselect it
+        if (activeProject === element) {
+          detailTitle.textContent = 'Select a Project'
+          detailIcon.classList.add('hidden')
+          detailContent.innerHTML =
+            '<div class="text-gray-500">Click a project on the left to view details</div>'
+          element.classList.remove('text-[#5f89ac]', 'underline')
+          activeProject = null
+          return
+        }
+
+        const title = element.dataset.title
+        const description = element.dataset.description
+        const features = JSON.parse(element.dataset.features)
+        const links = JSON.parse(element.dataset.links)
+        const icon = element.dataset.icon
+
+        detailTitle.textContent = title
+        detailIcon.src = `/img/${icon}`
+        detailIcon.classList.remove('hidden')
+
+        const contentHTML = `
+          ${marked.parse(description)}
+          <div class="mt-4">
+            <h3 class="font-bold mb-2">Features</h3>
+            <ul class="list-disc pl-4">
+              ${features.map((feature) => `<li class="mb-2">${marked.parse(feature)}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="mt-4 flex gap-1">
+            ${Object.entries(links)
+              .map(
+                ([key, url]) => `
+                  <div>
+                    [<a href="${url}" class="text-[#81a2be]" target="_blank">
+                      ${key.charAt(0).toUpperCase() + key.slice(1)}
+                    </a>]
+                  </div>
+                `,
+              )
+              .join('')}
+          </div>
+        `
+
+        detailContent.innerHTML = contentHTML
+        projectElements.forEach((el) =>
+          el.classList.remove('text-[#5f89ac]', 'underline'),
+        )
+        element.classList.add('text-[#5f89ac]', 'underline')
+        activeProject = element
+      })
+    })
+  })
+</script>
+
 <div class="mb-8 flex w-full gap-3">
   <div class="w-1/2">
     <div
-      class="flex h-10 w-full items-center bg-[#282a2e] px-4 py-3 font-bold leading-none"
+      class="flex h-10 w-full items-center gap-1 bg-[#282a2e] px-4 py-3 font-bold"
     >
-      Projects
+      <img src="/img/programs.webp" class="h-4 w-4" />
+      <span class="leading-none">Projects</span>
     </div>
     <div
-      class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-5 py-3"
+      class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-4 py-3"
     >
       <div class="flex flex-col gap-3">
         {{ range $id, $project := .Site.Data.projects }}
           <div
-            class="flex cursor-pointer items-center gap-1 leading-none hover:text-[#81a2be]"
+            class="flex cursor-pointer items-center gap-1 leading-none text-[#81a2be] hover:text-[#5f89ac]"
             data-project="{{ $id }}"
             data-title="{{ $project.title }}"
             data-description="{{ $project.description }}"
@@ -36,7 +104,7 @@
     </div>
     <div
       id="detail-content"
-      class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-5 py-3"
+      class="border-b border-l border-r border-[#282a2e] bg-[#232529] px-4 py-3"
     >
       <div class="text-gray-500">
         Click a project on the left to view details
@@ -44,67 +112,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const projectElements = document.querySelectorAll('[data-project]')
-    const detailTitle = document
-      .getElementById('detail-title')
-      .querySelector('span')
-    const detailIcon = document.getElementById('detail-icon')
-    const detailContent = document.getElementById('detail-content')
-
-    let activeProject = null
-
-    projectElements.forEach((element) => {
-      element.addEventListener('click', () => {
-        // If clicking the active project, deselect it
-        if (activeProject === element) {
-          detailTitle.textContent = 'Select a Project'
-          detailIcon.classList.add('hidden')
-          detailContent.innerHTML =
-            '<div class="text-gray-500">Click a project on the left to view details</div>'
-          element.classList.remove('text-[#81a2be]')
-          activeProject = null
-          return
-        }
-
-        const title = element.dataset.title
-        const description = element.dataset.description
-        const features = JSON.parse(element.dataset.features)
-        const links = JSON.parse(element.dataset.links)
-        const icon = element.dataset.icon
-
-        detailTitle.textContent = title
-        detailIcon.src = `/img/${icon}`
-        detailIcon.classList.remove('hidden')
-
-        const contentHTML = `
-        ${marked.parse(description)}
-        <div class="mt-4">
-          <h3 class="font-bold mb-2">Features</h3>
-          <ul class="list-disc pl-4">
-            ${features.map((feature) => `<li class="mb-2">${marked.parse(feature)}</li>`).join('')}
-          </ul>
-        </div>
-        <div class="mt-4 flex gap-4">
-          ${Object.entries(links)
-            .map(
-              ([key, url]) => `
-              <a href="${url}" class="text-[#81a2be] hover:underline" target="_blank">
-                ${key.charAt(0).toUpperCase() + key.slice(1)}
-              </a>
-            `,
-            )
-            .join('')}
-        </div>
-      `
-
-        detailContent.innerHTML = contentHTML
-        projectElements.forEach((el) => el.classList.remove('text-[#81a2be]'))
-        element.classList.add('text-[#81a2be]')
-        activeProject = element
-      })
-    })
-  })
-</script>

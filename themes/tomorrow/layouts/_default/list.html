@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ partial "title.html" .Title }}
+  {{ partial "title.html" (dict "title" "Posts" "icon" "posts") }}
   <div class="mx-auto max-w-4xl px-4">
     <div class="flex flex-col gap-1">
       {{ $pages := where .Site.RegularPages "Type" "posts" }}

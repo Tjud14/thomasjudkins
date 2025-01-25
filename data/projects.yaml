@@ -15,7 +15,7 @@ gunbase:
 
 tomorrow:
   title: "Tomorrow (Hugo Theme)"
-  icon: "download.webp"
+  icon: "tomorrow.webp"
   description: |
     A clean and minimal Hugo theme inspired by textboards, focusing on content readability and performance.
     View the theme on [GitHub](https://github.com/thomasjudkins/tomorrow)
@@ -30,7 +30,7 @@ tomorrow:
 
 yoink:
   title: "Yoink!"
-  icon: "download.webp"
+  icon: "yoink.webp"
   description: |
     A lightweight download manager designed specifically for Linux systems.
   features:

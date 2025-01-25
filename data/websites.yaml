@@ -1,7 +1,12 @@
 - category: "Development"
   order: 1
-  icon: "code.webp"
+  icon: "development.webp"
   sites:
+    - name: "Claude"
+      url: "https://claude.ai"
+      description: "Comprehensive web development documentation and guides"
+      icon: "claude.webp"
+
     - name: "GifCities"
       url: "https://developer.mozilla.org"
       description: "Comprehensive web development documentation and guides"
@@ -17,9 +22,9 @@
       description: "Comprehensive web development documentation and guides"
       icon: "svelteshadcn.webp"
 
-- category: "News/Commentary"
+- category: "News/Podcasts"
   order: 2
-  icon: "linux.webp"
+  icon: "news.webp"
   sites:
     - name: "Antiwar.com"
       url: "https://antiwar.com/"
@@ -35,16 +40,15 @@
       url: "https://www.unz.com/"
       description: "Supporting sustainable open source ecosystems"
       icon: "unz.webp"
-
-- category: "Podcasts/YouTube"
-  order: 3
-  icon: "youtube.webp"
-  sites:
     - name: "Freedomain"
       url: "https://www.fdrpodcasts.com"
       description: "Supporting sustainable open source ecosystems"
       icon: "freedomain.webp"
 
+- category: "YouTube"
+  order: 3
+  icon: "youtube.webp"
+  sites:
     - name: "Hardcore History"
       url: "https://www.dancarlin.com/hardcore-history-series/"
       description: "Supporting sustainable open source ecosystems"
@@ -57,7 +61,7 @@
 
 - category: "Miscellaneous"
   order: 4
-  icon: "news.webp"
+  icon: "miscellaneous.webp"
   sites:
     - name: "Based Cooking"
       url: "https://based.cooking/"
